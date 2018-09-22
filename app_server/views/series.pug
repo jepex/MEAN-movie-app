@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= 'Series'
+  ul
+    each series in series1
+      li= series.year + ': ' + series.name + ' (' + series.seasons + ')'
+
