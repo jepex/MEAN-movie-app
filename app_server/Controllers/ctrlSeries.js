@@ -1,7 +1,7 @@
 
-const serielist = function(req, res){
+const winnerlist = function(req, res){
     res.render('series',{
-        series1:
+        winners:
             [
                 {year:'1993', name:'The X-Files', seasons: '11'},
                 {year:'2002', name:'The Wire', seasons: '5'},
@@ -11,5 +11,5 @@ const serielist = function(req, res){
             ]});
 };
 module.exports = {
-    serielist
+     winnerlist
 };

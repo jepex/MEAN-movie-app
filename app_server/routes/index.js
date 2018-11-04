@@ -8,7 +8,7 @@ const ctrlSeries = require('../controllers/ctrlSeries'); // ... for the the list
 
 // Defining the routes and associating the routes to their corresponding controllers
 router.get('/', ctrlMain.index);  // Home page
-router.get('/movie', ctrlMovie.movielist);  // List of World Cup winners (countries)
-router.get('/series', ctrlSeries.serielist);  // List of Golden ball winners (players)
+router.get('/movie', ctrlMovie.winnerlist);  // List of World Cup winners (countries)
+router.get('/series', ctrlSeries.winnerlist);  // List of Golden ball winners (players)
 
 module.exports = router;

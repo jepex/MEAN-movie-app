@@ -1,7 +1,7 @@
 
-const movielist= function(req, res){
+const winnerlist= function(req, res){
     res.render('movie',{
-        movies:
+        winners:
         [
             {year:'1999', name:'The Sixth Sense'},
             {year:'2001', name:'Donnie Darko'},
@@ -12,5 +12,5 @@ const movielist= function(req, res){
         ]});
 };
 module.exports = {
-    movielist
+   winnerlist
 };
