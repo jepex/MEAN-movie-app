@@ -1,15 +1,34 @@
+const request = require('request');
+const apiURL = require('./apiURLs');
 
 const winnerlist = function(req, res){
-    res.render('series',{
-        winners:
-            [
-                {year:'1993', name:'The X-Files', seasons: '11'},
-                {year:'2002', name:'The Wire', seasons: '5'},
-                {year:'2016', name:'Westworld', seasons: '2'},
-                {year:'1999', name:'The Sopranos', seasons: '6'},
+    const path = '/api/series';
+    const requestOptions = {
+        url : apiURL.server + path,
+        method : 'GET',
+        json : {},
+        qs : {}
+    };
 
-            ]});
+    request(
+        requestOptions,
+        function (err, response, body){
+            if (err){
+                res.render('error', {message: err.message});
+            } else if (response.statusCode !== 200){
+                res.render('error', {message: 'Error accessing API: ' +
+                                                response.statusMessage +
+                                                    ' ('+ response.statusCode + ')' });
+            } else if (!(body instanceof Array)) {
+                res.render('error', {message: 'Unexpected response data'});
+            } else if (!body.length){
+                res.render('error', {message: 'No documents in collection'});
+            } else {
+                res.render('series', {winners: body});
+            }
+        }
+    );
 };
 module.exports = {
-     winnerlist
+    winnerlist
 };
